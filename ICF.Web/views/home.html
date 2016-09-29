@@ -1,0 +1,35 @@
+
+ <div class="container">
+      <div class="row">
+          <div class="col-md-offset-9">
+              <label>Type : </label>
+              <select ng-model="type" requred ng-options="type for type in types"> </select>
+          </div>
+      </div>
+        <div class="row">
+           
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-preview" ng-repeat="post in posts | filterPosts:type ">
+                    <a href="#/post/{{post._id}}">
+                        <h2 class="post-title">
+                            {{post.title}}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            <div ng-bind-html="post.content | ellipsis:1500">
+                                </div>
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by <a href="#/post/{{post._id}}">{{post.user.name}}</a> on {{post.date | date:'fullDate'}} at {{post.date | date:'mediumTime'}}</p>
+                </div>
+            </div>
+            </div>
+        </div>
+     
+        <center>
+            
+        <input type="button" value="Load More" ng-show="showLoadBtn" ng-click="loadMore();" class="btn btn-primary"/>
+</center>
+
+    
+
+

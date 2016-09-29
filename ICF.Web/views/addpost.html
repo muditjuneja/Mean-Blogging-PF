@@ -1,0 +1,36 @@
+﻿
+  <div class="container">
+
+  <ng-form name="addPostForm" >
+    <div class="form-group">
+          <div class="col-md-8">
+              <input type="text" class="form-control" placeholder="Title" required  ng-model="post.title">
+          </div>
+          <div class="col-md-4">
+              <label>Type : </label>
+              <select ng-model="post.type" required ng-options="type for type in types"> </select>
+          </div>
+         
+      </div>
+
+    <!--<text-angular ng-model="htmlVariable"></text-angular>-->
+
+<div class="form-group">
+    <div class="col-md-12" style="margin-top:6px;">
+        <summernote height="300" required ng-model="post.content">
+        </summernote>
+    </div>     
+</div>
+     
+     <div class="btn-group btn-group-justified" role="group">
+  <div class="btn-group" role="group">
+     <button type="button" class="btn btn-primary" ng-disabled="!addPostForm.$valid" ng-click="addPost(post);">Post</button>
+  </div>
+     </div>
+  </ng-form>
+  </div>
+  
+
+    
+
+
