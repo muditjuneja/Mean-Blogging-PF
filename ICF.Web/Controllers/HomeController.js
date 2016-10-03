@@ -5,9 +5,7 @@ angular.module('ICF')
     $scope.showLoadBtn = true;
     PostService.getPosts(pageNo)
       .success(function(response) {
-        console.log(response);
         $scope.posts = response;
-        //console.log($scope.posts);
       })
       .error(function(err) {
         console.log(err);
@@ -17,29 +15,29 @@ angular.module('ICF')
       var date = new Date(post.created);
       return date;
     };
-    $scope.loadMore = function(){
+    $scope.loadMore = function() {
       pageNo++;
       console.log(pageNo);
       PostService.getPosts(pageNo)
-      .success(function(response) {
-        if(response.length > 0){
-        for (var i = 0; i < response.length; i++) {
-        $scope.posts.push(response[i]);
-        }}
-        else
-        {
-           $scope.showLoadBtn = false;
-        }
-      })
-      .error(function(err) {
-        console.log(err);
-      });
+        .success(function(response) {
+          if (response.length > 0) {
+            for (var i = 0; i < response.length; i++) {
+              $scope.posts.push(response[i]);
+            }
+          }
+          else {
+            $scope.showLoadBtn = false;
+          }
+        })
+        .error(function(err) {
+          console.log(err);
+        });
     }
 
-$scope.$watch('type',function(newValue,old){
-  if(newValue == 'None'){
-    $scope.type = ''
-  }
-  
-});
+    $scope.$watch('type', function(newValue, old) {
+      if (newValue == 'None') {
+        $scope.type = ''
+      }
+
+    });
   });

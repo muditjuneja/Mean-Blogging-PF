@@ -35,7 +35,7 @@ app.filter('filterPosts', function() {
                     filtered.push(item);
                 }
             }
-        return filtered;
+            return filtered;
         }
         else
             return items;
