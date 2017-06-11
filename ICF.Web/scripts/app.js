@@ -10,8 +10,7 @@ app.run(function(localStorageService, $location, $rootScope, $http, appSetting, 
     $rootScope.types = ['None', 'Tech', 'Life', 'Hollywood', 'Entertainment', 'History', 'Bollywood', 'Mystery'];
     if (!localStorageService.get("token")) {
         $rootScope.isAuthenticated = false;
-    }
-    else {
+    } else {
         $rootScope.isAuthenticated = true;
         $rootScope.user = localStorageService.get("user");
     }
@@ -36,14 +35,13 @@ app.filter('filterPosts', function() {
                 }
             }
             return filtered;
-        }
-        else
+        } else
             return items;
 
     }
 });
 
-var apiBase = "https://yesplease-muditjuneja1.c9users.io:8080/api/";
+var apiBase = "http://127.0.0.1:8888/api/";
 app.value("appSetting", {
     "apiBaseUrl": apiBase
 });
@@ -74,6 +72,10 @@ app.config(function($routeProvider, $locationProvider) {
         .when('/post/:id', {
             templateUrl: 'views/post.html',
             controller: 'GetPostController'
+        })
+        .when('/upload/', {
+            templateUrl: 'views/upload.html',
+            controller: 'UploadFileController'
         })
         .otherwise({
             redirectTo: '/'

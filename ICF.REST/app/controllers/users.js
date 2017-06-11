@@ -8,6 +8,7 @@ exports.postUsers = function(req, res) {
     console.log(user);
     user.save(function(err) {
         if (err) {
+console.log(err);
             res.status(400);
             return res.send(err);
         }
